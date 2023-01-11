@@ -57,7 +57,7 @@ namespace Chess.ViewModel.Game
         public ChessGameVM(Func<IList<Update>, Update> updateSelector)
         {
             this.rulebook = new StandardRulebook();
-            this.Game = this.rulebook.CreateGame();
+            this.Game = this.rulebook.Create960Game();
             this.board = new BoardVM(this.Game.Board);
             this.updateSelector = updateSelector;
             this.negator = new CommandNegator();
@@ -122,7 +122,7 @@ namespace Chess.ViewModel.Game
                     () => true,
                     () =>
                     {
-                        this.Game = this.rulebook.CreateGame();
+                        this.Game = this.rulebook.CreateTraditionalGame();
                         this.Board = new BoardVM(this.Game.Board);
                         this.OnPropertyChanged(nameof(this.Status));
                     }

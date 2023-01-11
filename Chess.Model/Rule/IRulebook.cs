@@ -19,7 +19,8 @@ namespace Chess.Model.Rule
         /// Creates a new chess game, according to the rulebook.
         /// </summary>
         /// <returns>The newly created chess game.</returns>
-        ChessGame CreateGame();
+        ChessGame CreateTraditionalGame();
+        ChessGame Create960Game();
 
         /// <summary>
         /// Gets the status of a chess game, according to the rulebook.

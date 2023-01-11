@@ -51,7 +51,7 @@
             </MenuItem>
         </Menu>
         <Viewbox Margin="20">
-            <Border BorderThickness="0.1" BorderBrush="White">
+            <Border BorderThickness="0.2" BorderBrush="White">
                 <Border.Resources>
                     <Duration x:Key="duration">0:0:0.5</Duration>
                     <Storyboard x:Key="fadeWhite">
@@ -83,7 +83,7 @@
                                    Margin="5"/>
                     </ToolTip>
                 </Border.ToolTip>
-                <Canvas Width="8" Height="8" MouseDown="BoardMouseDown">
+                <Canvas x:Name="Board" Width="8" Height="8" MouseDown="BoardMouseDown" Visibility="Hidden">
                     <Canvas.Resources>
                         <PowerEase x:Key="ease" EasingMode="EaseInOut" />
                         <Storyboard x:Key="fadeIn">
