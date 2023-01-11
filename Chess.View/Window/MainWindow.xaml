@@ -50,7 +50,21 @@
                 </MenuItem.Header>
             </MenuItem>
         </Menu>
-        <Viewbox Margin="20">
+        <Viewbox x:Name="Menu"  Margin="170" Height="90" Width="400" >
+            <Grid Width="325">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Traditional Chess" Height="100" Width="158" Click="StartTraditionalGame"/>
+                <Button Content="Chess 960" Margin="0,0,-1,0" Grid.Column="1" Click="Start960Game"/>
+            </Grid>
+        </Viewbox>
+        <Viewbox x:Name="Board" Margin="20" Visibility="Hidden">
             <Border BorderThickness="0.2" BorderBrush="White">
                 <Border.Resources>
                     <Duration x:Key="duration">0:0:0.5</Duration>
@@ -83,7 +97,7 @@
                                    Margin="5"/>
                     </ToolTip>
                 </Border.ToolTip>
-                <Canvas x:Name="Board" Width="8" Height="8" MouseDown="BoardMouseDown" Visibility="Hidden">
+                <Canvas Width="8" Height="8" MouseDown="BoardMouseDown">
                     <Canvas.Resources>
                         <PowerEase x:Key="ease" EasingMode="EaseInOut" />
                         <Storyboard x:Key="fadeIn">

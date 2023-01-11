@@ -23,20 +23,33 @@ namespace Chess.View.Window
         /// <summary>
         /// Represents the view model of the window.
         /// </summary>
-        private readonly ChessGameVM game;
+        private ChessGameVM game;
 
         /// <summary>
         /// Provides the functionality to extract promotions from a sequence of updates.
         /// </summary>
-        private readonly PromotionSelector promotionSelector;
+        private PromotionSelector promotionSelector;
 
+        private bool Is960 = false;
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
         public MainWindow()
         {
             this.InitializeComponent();
-            this.game = new ChessGameVM(this.Choose);
+        }
+
+        private void StartGame(bool Is960)
+        {
+            this.Is960 = Is960;
+
+            Menu.Visibility = Visibility.Hidden;
+            Menu.Margin = new Thickness(0);
+            Menu.Height = 0.0;
+            Menu.Width = 0.0;
+            Board.Visibility = Visibility.Visible;
+
+            this.game = new ChessGameVM(this.Choose, this.Is960);
             this.promotionSelector = new PromotionSelector();
             this.DataContext = this.game;
         }
@@ -104,5 +117,16 @@ namespace Chess.View.Window
                     ? promotions[selectedPiece]
                     : null;
         }
+
+        private void StartTraditionalGame(object sender, RoutedEventArgs e)
+        {
+            StartGame(false);
+        }
+        
+        private void Start960Game(object sender, RoutedEventArgs e)
+        {
+            StartGame(true);
+        }
+
     }
 }
